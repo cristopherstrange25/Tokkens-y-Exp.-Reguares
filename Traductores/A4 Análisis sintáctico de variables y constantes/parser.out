@@ -1,0 +1,203 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> declaration
+Rule 1     declaration -> variable_decl
+Rule 2     declaration -> constant_decl
+Rule 3     variable_decl -> TYPE IDENTIFIER SEMICOLON
+Rule 4     variable_decl -> TYPE IDENTIFIER ASSIGN literal SEMICOLON
+Rule 5     constant_decl -> CONST TYPE IDENTIFIER ASSIGN literal SEMICOLON
+Rule 6     literal -> INT_LITERAL
+Rule 7     literal -> FLOAT_LITERAL
+Rule 8     literal -> STRING_LITERAL
+Rule 9     literal -> BOOL_LITERAL
+
+Terminals, with rules where they appear
+
+ASSIGN               : 4 5
+BOOL_LITERAL         : 9
+CONST                : 5
+FLOAT_LITERAL        : 7
+IDENTIFIER           : 3 4 5
+INT_LITERAL          : 6
+SEMICOLON            : 3 4 5
+STRING_LITERAL       : 8
+TYPE                 : 3 4 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+constant_decl        : 2
+declaration          : 0
+literal              : 4 5
+variable_decl        : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . declaration
+    (1) declaration -> . variable_decl
+    (2) declaration -> . constant_decl
+    (3) variable_decl -> . TYPE IDENTIFIER SEMICOLON
+    (4) variable_decl -> . TYPE IDENTIFIER ASSIGN literal SEMICOLON
+    (5) constant_decl -> . CONST TYPE IDENTIFIER ASSIGN literal SEMICOLON
+
+    TYPE            shift and go to state 4
+    CONST           shift and go to state 5
+
+    declaration                    shift and go to state 1
+    variable_decl                  shift and go to state 2
+    constant_decl                  shift and go to state 3
+
+state 1
+
+    (0) S' -> declaration .
+
+
+
+state 2
+
+    (1) declaration -> variable_decl .
+
+    $end            reduce using rule 1 (declaration -> variable_decl .)
+
+
+state 3
+
+    (2) declaration -> constant_decl .
+
+    $end            reduce using rule 2 (declaration -> constant_decl .)
+
+
+state 4
+
+    (3) variable_decl -> TYPE . IDENTIFIER SEMICOLON
+    (4) variable_decl -> TYPE . IDENTIFIER ASSIGN literal SEMICOLON
+
+    IDENTIFIER      shift and go to state 6
+
+
+state 5
+
+    (5) constant_decl -> CONST . TYPE IDENTIFIER ASSIGN literal SEMICOLON
+
+    TYPE            shift and go to state 7
+
+
+state 6
+
+    (3) variable_decl -> TYPE IDENTIFIER . SEMICOLON
+    (4) variable_decl -> TYPE IDENTIFIER . ASSIGN literal SEMICOLON
+
+    SEMICOLON       shift and go to state 8
+    ASSIGN          shift and go to state 9
+
+
+state 7
+
+    (5) constant_decl -> CONST TYPE . IDENTIFIER ASSIGN literal SEMICOLON
+
+    IDENTIFIER      shift and go to state 10
+
+
+state 8
+
+    (3) variable_decl -> TYPE IDENTIFIER SEMICOLON .
+
+    $end            reduce using rule 3 (variable_decl -> TYPE IDENTIFIER SEMICOLON .)
+
+
+state 9
+
+    (4) variable_decl -> TYPE IDENTIFIER ASSIGN . literal SEMICOLON
+    (6) literal -> . INT_LITERAL
+    (7) literal -> . FLOAT_LITERAL
+    (8) literal -> . STRING_LITERAL
+    (9) literal -> . BOOL_LITERAL
+
+    INT_LITERAL     shift and go to state 12
+    FLOAT_LITERAL   shift and go to state 13
+    STRING_LITERAL  shift and go to state 14
+    BOOL_LITERAL    shift and go to state 15
+
+    literal                        shift and go to state 11
+
+state 10
+
+    (5) constant_decl -> CONST TYPE IDENTIFIER . ASSIGN literal SEMICOLON
+
+    ASSIGN          shift and go to state 16
+
+
+state 11
+
+    (4) variable_decl -> TYPE IDENTIFIER ASSIGN literal . SEMICOLON
+
+    SEMICOLON       shift and go to state 17
+
+
+state 12
+
+    (6) literal -> INT_LITERAL .
+
+    SEMICOLON       reduce using rule 6 (literal -> INT_LITERAL .)
+
+
+state 13
+
+    (7) literal -> FLOAT_LITERAL .
+
+    SEMICOLON       reduce using rule 7 (literal -> FLOAT_LITERAL .)
+
+
+state 14
+
+    (8) literal -> STRING_LITERAL .
+
+    SEMICOLON       reduce using rule 8 (literal -> STRING_LITERAL .)
+
+
+state 15
+
+    (9) literal -> BOOL_LITERAL .
+
+    SEMICOLON       reduce using rule 9 (literal -> BOOL_LITERAL .)
+
+
+state 16
+
+    (5) constant_decl -> CONST TYPE IDENTIFIER ASSIGN . literal SEMICOLON
+    (6) literal -> . INT_LITERAL
+    (7) literal -> . FLOAT_LITERAL
+    (8) literal -> . STRING_LITERAL
+    (9) literal -> . BOOL_LITERAL
+
+    INT_LITERAL     shift and go to state 12
+    FLOAT_LITERAL   shift and go to state 13
+    STRING_LITERAL  shift and go to state 14
+    BOOL_LITERAL    shift and go to state 15
+
+    literal                        shift and go to state 18
+
+state 17
+
+    (4) variable_decl -> TYPE IDENTIFIER ASSIGN literal SEMICOLON .
+
+    $end            reduce using rule 4 (variable_decl -> TYPE IDENTIFIER ASSIGN literal SEMICOLON .)
+
+
+state 18
+
+    (5) constant_decl -> CONST TYPE IDENTIFIER ASSIGN literal . SEMICOLON
+
+    SEMICOLON       shift and go to state 19
+
+
+state 19
+
+    (5) constant_decl -> CONST TYPE IDENTIFIER ASSIGN literal SEMICOLON .
+
+    $end            reduce using rule 5 (constant_decl -> CONST TYPE IDENTIFIER ASSIGN literal SEMICOLON .)
+

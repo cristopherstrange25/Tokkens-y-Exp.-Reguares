@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+// Celestino Martinez Cristopher 
+// Ramirez Rivas Luis Fernando
+// Rivas Tejeda Hector Manuel
+
+int main() {
+    // Imprimir nombres completos en orden alfabético
+    printf("TRADUCTORES DE LENGUAJES:\n");
+    printf("Actividad 2\n");
+
+    // Código que será procesado por el lexer
+    entero a;         // Declaración de variable de tipo entero
+    flotante b = 3.14; // Declaración de variable de tipo flotante
+    booleano esValido = 1; // Declaración de variable booleana
+    cadena saludo = "Hola, mundo!"; // Declaración de cadena
+
+    a = 10;  // Asignación de valor a 'a'
+    
+    if (a > b) { // Comparación de 'a' y 'b'
+        printf("%s\n", saludo); // Imprimir el saludo
+    }
+
+    // Imprimir nombres completos en orden alfabético al final
+    printf("\nIntegrantes del equipo:\n");
+    printf("1. Celestino Martinez Cristopher\n");
+    printf("2. Ramirez Rivas Luis Fernando\n");
+    printf("3. Rivas Tejeda Hector Manuel\n");
+
+    return 0;
+}

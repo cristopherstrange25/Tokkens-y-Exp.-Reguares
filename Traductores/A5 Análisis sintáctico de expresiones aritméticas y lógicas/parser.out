@@ -1,0 +1,722 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMA
+
+Grammar
+
+Rule 0     S' -> expresion
+Rule 1     expresion -> expresion_aritmetica
+Rule 2     expresion -> expresion_logica
+Rule 3     expresion_aritmetica -> termino
+Rule 4     expresion_aritmetica -> expresion_aritmetica MAS termino
+Rule 5     expresion_aritmetica -> expresion_aritmetica MENOS termino
+Rule 6     termino -> factor
+Rule 7     termino -> termino POR factor
+Rule 8     termino -> termino DIVIDIDO factor
+Rule 9     factor -> NUMERO
+Rule 10    factor -> IDENTIFICADOR
+Rule 11    factor -> PARIZQ expresion_aritmetica PARDER
+Rule 12    expresion_logica -> termino_logico
+Rule 13    expresion_logica -> expresion_logica AND termino_logico
+Rule 14    expresion_logica -> expresion_logica OR termino_logico
+Rule 15    termino_logico -> expresion_aritmetica IGUAL expresion_aritmetica
+Rule 16    termino_logico -> expresion_aritmetica DIFERENTE expresion_aritmetica
+Rule 17    termino_logico -> expresion_aritmetica MAYOR expresion_aritmetica
+Rule 18    termino_logico -> expresion_aritmetica MENOR expresion_aritmetica
+Rule 19    termino_logico -> expresion_aritmetica MAYORIGUAL expresion_aritmetica
+Rule 20    termino_logico -> expresion_aritmetica MENORIGUAL expresion_aritmetica
+
+Terminals, with rules where they appear
+
+AND                  : 13
+COMA                 : 
+DIFERENTE            : 16
+DIVIDIDO             : 8
+IDENTIFICADOR        : 10
+IGUAL                : 15
+MAS                  : 4
+MAYOR                : 17
+MAYORIGUAL           : 19
+MENOR                : 18
+MENORIGUAL           : 20
+MENOS                : 5
+NUMERO               : 9
+OR                   : 14
+PARDER               : 11
+PARIZQ               : 11
+POR                  : 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+expresion            : 0
+expresion_aritmetica : 1 4 5 11 15 15 16 16 17 17 18 18 19 19 20 20
+expresion_logica     : 2 13 14
+factor               : 6 7 8
+termino              : 3 4 5 7 8
+termino_logico       : 12 13 14
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expresion
+    (1) expresion -> . expresion_aritmetica
+    (2) expresion -> . expresion_logica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (12) expresion_logica -> . termino_logico
+    (13) expresion_logica -> . expresion_logica AND termino_logico
+    (14) expresion_logica -> . expresion_logica OR termino_logico
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (15) termino_logico -> . expresion_aritmetica IGUAL expresion_aritmetica
+    (16) termino_logico -> . expresion_aritmetica DIFERENTE expresion_aritmetica
+    (17) termino_logico -> . expresion_aritmetica MAYOR expresion_aritmetica
+    (18) termino_logico -> . expresion_aritmetica MENOR expresion_aritmetica
+    (19) termino_logico -> . expresion_aritmetica MAYORIGUAL expresion_aritmetica
+    (20) termino_logico -> . expresion_aritmetica MENORIGUAL expresion_aritmetica
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    expresion                      shift and go to state 1
+    expresion_aritmetica           shift and go to state 2
+    expresion_logica               shift and go to state 3
+    termino                        shift and go to state 4
+    termino_logico                 shift and go to state 5
+    factor                         shift and go to state 6
+
+state 1
+
+    (0) S' -> expresion .
+
+
+
+state 2
+
+    (1) expresion -> expresion_aritmetica .
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+    (15) termino_logico -> expresion_aritmetica . IGUAL expresion_aritmetica
+    (16) termino_logico -> expresion_aritmetica . DIFERENTE expresion_aritmetica
+    (17) termino_logico -> expresion_aritmetica . MAYOR expresion_aritmetica
+    (18) termino_logico -> expresion_aritmetica . MENOR expresion_aritmetica
+    (19) termino_logico -> expresion_aritmetica . MAYORIGUAL expresion_aritmetica
+    (20) termino_logico -> expresion_aritmetica . MENORIGUAL expresion_aritmetica
+
+    $end            reduce using rule 1 (expresion -> expresion_aritmetica .)
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+    IGUAL           shift and go to state 12
+    DIFERENTE       shift and go to state 13
+    MAYOR           shift and go to state 14
+    MENOR           shift and go to state 15
+    MAYORIGUAL      shift and go to state 16
+    MENORIGUAL      shift and go to state 17
+
+
+state 3
+
+    (2) expresion -> expresion_logica .
+    (13) expresion_logica -> expresion_logica . AND termino_logico
+    (14) expresion_logica -> expresion_logica . OR termino_logico
+
+    $end            reduce using rule 2 (expresion -> expresion_logica .)
+    AND             shift and go to state 18
+    OR              shift and go to state 19
+
+
+state 4
+
+    (3) expresion_aritmetica -> termino .
+    (7) termino -> termino . POR factor
+    (8) termino -> termino . DIVIDIDO factor
+
+    MAS             reduce using rule 3 (expresion_aritmetica -> termino .)
+    MENOS           reduce using rule 3 (expresion_aritmetica -> termino .)
+    IGUAL           reduce using rule 3 (expresion_aritmetica -> termino .)
+    DIFERENTE       reduce using rule 3 (expresion_aritmetica -> termino .)
+    MAYOR           reduce using rule 3 (expresion_aritmetica -> termino .)
+    MENOR           reduce using rule 3 (expresion_aritmetica -> termino .)
+    MAYORIGUAL      reduce using rule 3 (expresion_aritmetica -> termino .)
+    MENORIGUAL      reduce using rule 3 (expresion_aritmetica -> termino .)
+    $end            reduce using rule 3 (expresion_aritmetica -> termino .)
+    PARDER          reduce using rule 3 (expresion_aritmetica -> termino .)
+    AND             reduce using rule 3 (expresion_aritmetica -> termino .)
+    OR              reduce using rule 3 (expresion_aritmetica -> termino .)
+    POR             shift and go to state 20
+    DIVIDIDO        shift and go to state 21
+
+
+state 5
+
+    (12) expresion_logica -> termino_logico .
+
+    AND             reduce using rule 12 (expresion_logica -> termino_logico .)
+    OR              reduce using rule 12 (expresion_logica -> termino_logico .)
+    $end            reduce using rule 12 (expresion_logica -> termino_logico .)
+
+
+state 6
+
+    (6) termino -> factor .
+
+    POR             reduce using rule 6 (termino -> factor .)
+    DIVIDIDO        reduce using rule 6 (termino -> factor .)
+    MAS             reduce using rule 6 (termino -> factor .)
+    MENOS           reduce using rule 6 (termino -> factor .)
+    IGUAL           reduce using rule 6 (termino -> factor .)
+    DIFERENTE       reduce using rule 6 (termino -> factor .)
+    MAYOR           reduce using rule 6 (termino -> factor .)
+    MENOR           reduce using rule 6 (termino -> factor .)
+    MAYORIGUAL      reduce using rule 6 (termino -> factor .)
+    MENORIGUAL      reduce using rule 6 (termino -> factor .)
+    $end            reduce using rule 6 (termino -> factor .)
+    PARDER          reduce using rule 6 (termino -> factor .)
+    AND             reduce using rule 6 (termino -> factor .)
+    OR              reduce using rule 6 (termino -> factor .)
+
+
+state 7
+
+    (9) factor -> NUMERO .
+
+    POR             reduce using rule 9 (factor -> NUMERO .)
+    DIVIDIDO        reduce using rule 9 (factor -> NUMERO .)
+    MAS             reduce using rule 9 (factor -> NUMERO .)
+    MENOS           reduce using rule 9 (factor -> NUMERO .)
+    IGUAL           reduce using rule 9 (factor -> NUMERO .)
+    DIFERENTE       reduce using rule 9 (factor -> NUMERO .)
+    MAYOR           reduce using rule 9 (factor -> NUMERO .)
+    MENOR           reduce using rule 9 (factor -> NUMERO .)
+    MAYORIGUAL      reduce using rule 9 (factor -> NUMERO .)
+    MENORIGUAL      reduce using rule 9 (factor -> NUMERO .)
+    $end            reduce using rule 9 (factor -> NUMERO .)
+    PARDER          reduce using rule 9 (factor -> NUMERO .)
+    AND             reduce using rule 9 (factor -> NUMERO .)
+    OR              reduce using rule 9 (factor -> NUMERO .)
+
+
+state 8
+
+    (10) factor -> IDENTIFICADOR .
+
+    POR             reduce using rule 10 (factor -> IDENTIFICADOR .)
+    DIVIDIDO        reduce using rule 10 (factor -> IDENTIFICADOR .)
+    MAS             reduce using rule 10 (factor -> IDENTIFICADOR .)
+    MENOS           reduce using rule 10 (factor -> IDENTIFICADOR .)
+    IGUAL           reduce using rule 10 (factor -> IDENTIFICADOR .)
+    DIFERENTE       reduce using rule 10 (factor -> IDENTIFICADOR .)
+    MAYOR           reduce using rule 10 (factor -> IDENTIFICADOR .)
+    MENOR           reduce using rule 10 (factor -> IDENTIFICADOR .)
+    MAYORIGUAL      reduce using rule 10 (factor -> IDENTIFICADOR .)
+    MENORIGUAL      reduce using rule 10 (factor -> IDENTIFICADOR .)
+    $end            reduce using rule 10 (factor -> IDENTIFICADOR .)
+    PARDER          reduce using rule 10 (factor -> IDENTIFICADOR .)
+    AND             reduce using rule 10 (factor -> IDENTIFICADOR .)
+    OR              reduce using rule 10 (factor -> IDENTIFICADOR .)
+
+
+state 9
+
+    (11) factor -> PARIZQ . expresion_aritmetica PARDER
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    expresion_aritmetica           shift and go to state 22
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 10
+
+    (4) expresion_aritmetica -> expresion_aritmetica MAS . termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    termino                        shift and go to state 23
+    factor                         shift and go to state 6
+
+state 11
+
+    (5) expresion_aritmetica -> expresion_aritmetica MENOS . termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    termino                        shift and go to state 24
+    factor                         shift and go to state 6
+
+state 12
+
+    (15) termino_logico -> expresion_aritmetica IGUAL . expresion_aritmetica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    expresion_aritmetica           shift and go to state 25
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 13
+
+    (16) termino_logico -> expresion_aritmetica DIFERENTE . expresion_aritmetica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    expresion_aritmetica           shift and go to state 26
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 14
+
+    (17) termino_logico -> expresion_aritmetica MAYOR . expresion_aritmetica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    expresion_aritmetica           shift and go to state 27
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 15
+
+    (18) termino_logico -> expresion_aritmetica MENOR . expresion_aritmetica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    expresion_aritmetica           shift and go to state 28
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 16
+
+    (19) termino_logico -> expresion_aritmetica MAYORIGUAL . expresion_aritmetica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    expresion_aritmetica           shift and go to state 29
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 17
+
+    (20) termino_logico -> expresion_aritmetica MENORIGUAL . expresion_aritmetica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    expresion_aritmetica           shift and go to state 30
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 18
+
+    (13) expresion_logica -> expresion_logica AND . termino_logico
+    (15) termino_logico -> . expresion_aritmetica IGUAL expresion_aritmetica
+    (16) termino_logico -> . expresion_aritmetica DIFERENTE expresion_aritmetica
+    (17) termino_logico -> . expresion_aritmetica MAYOR expresion_aritmetica
+    (18) termino_logico -> . expresion_aritmetica MENOR expresion_aritmetica
+    (19) termino_logico -> . expresion_aritmetica MAYORIGUAL expresion_aritmetica
+    (20) termino_logico -> . expresion_aritmetica MENORIGUAL expresion_aritmetica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    termino_logico                 shift and go to state 31
+    expresion_aritmetica           shift and go to state 32
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 19
+
+    (14) expresion_logica -> expresion_logica OR . termino_logico
+    (15) termino_logico -> . expresion_aritmetica IGUAL expresion_aritmetica
+    (16) termino_logico -> . expresion_aritmetica DIFERENTE expresion_aritmetica
+    (17) termino_logico -> . expresion_aritmetica MAYOR expresion_aritmetica
+    (18) termino_logico -> . expresion_aritmetica MENOR expresion_aritmetica
+    (19) termino_logico -> . expresion_aritmetica MAYORIGUAL expresion_aritmetica
+    (20) termino_logico -> . expresion_aritmetica MENORIGUAL expresion_aritmetica
+    (3) expresion_aritmetica -> . termino
+    (4) expresion_aritmetica -> . expresion_aritmetica MAS termino
+    (5) expresion_aritmetica -> . expresion_aritmetica MENOS termino
+    (6) termino -> . factor
+    (7) termino -> . termino POR factor
+    (8) termino -> . termino DIVIDIDO factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    termino_logico                 shift and go to state 33
+    expresion_aritmetica           shift and go to state 32
+    termino                        shift and go to state 4
+    factor                         shift and go to state 6
+
+state 20
+
+    (7) termino -> termino POR . factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    factor                         shift and go to state 34
+
+state 21
+
+    (8) termino -> termino DIVIDIDO . factor
+    (9) factor -> . NUMERO
+    (10) factor -> . IDENTIFICADOR
+    (11) factor -> . PARIZQ expresion_aritmetica PARDER
+
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 8
+    PARIZQ          shift and go to state 9
+
+    factor                         shift and go to state 35
+
+state 22
+
+    (11) factor -> PARIZQ expresion_aritmetica . PARDER
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+
+    PARDER          shift and go to state 36
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+
+
+state 23
+
+    (4) expresion_aritmetica -> expresion_aritmetica MAS termino .
+    (7) termino -> termino . POR factor
+    (8) termino -> termino . DIVIDIDO factor
+
+    MAS             reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    MENOS           reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    IGUAL           reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    DIFERENTE       reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    MAYOR           reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    MENOR           reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    MAYORIGUAL      reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    MENORIGUAL      reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    $end            reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    PARDER          reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    AND             reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    OR              reduce using rule 4 (expresion_aritmetica -> expresion_aritmetica MAS termino .)
+    POR             shift and go to state 20
+    DIVIDIDO        shift and go to state 21
+
+
+state 24
+
+    (5) expresion_aritmetica -> expresion_aritmetica MENOS termino .
+    (7) termino -> termino . POR factor
+    (8) termino -> termino . DIVIDIDO factor
+
+    MAS             reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    MENOS           reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    IGUAL           reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    DIFERENTE       reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    MAYOR           reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    MENOR           reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    MAYORIGUAL      reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    MENORIGUAL      reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    $end            reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    PARDER          reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    AND             reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    OR              reduce using rule 5 (expresion_aritmetica -> expresion_aritmetica MENOS termino .)
+    POR             shift and go to state 20
+    DIVIDIDO        shift and go to state 21
+
+
+state 25
+
+    (15) termino_logico -> expresion_aritmetica IGUAL expresion_aritmetica .
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+
+    AND             reduce using rule 15 (termino_logico -> expresion_aritmetica IGUAL expresion_aritmetica .)
+    OR              reduce using rule 15 (termino_logico -> expresion_aritmetica IGUAL expresion_aritmetica .)
+    $end            reduce using rule 15 (termino_logico -> expresion_aritmetica IGUAL expresion_aritmetica .)
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+
+
+state 26
+
+    (16) termino_logico -> expresion_aritmetica DIFERENTE expresion_aritmetica .
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+
+    AND             reduce using rule 16 (termino_logico -> expresion_aritmetica DIFERENTE expresion_aritmetica .)
+    OR              reduce using rule 16 (termino_logico -> expresion_aritmetica DIFERENTE expresion_aritmetica .)
+    $end            reduce using rule 16 (termino_logico -> expresion_aritmetica DIFERENTE expresion_aritmetica .)
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+
+
+state 27
+
+    (17) termino_logico -> expresion_aritmetica MAYOR expresion_aritmetica .
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+
+    AND             reduce using rule 17 (termino_logico -> expresion_aritmetica MAYOR expresion_aritmetica .)
+    OR              reduce using rule 17 (termino_logico -> expresion_aritmetica MAYOR expresion_aritmetica .)
+    $end            reduce using rule 17 (termino_logico -> expresion_aritmetica MAYOR expresion_aritmetica .)
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+
+
+state 28
+
+    (18) termino_logico -> expresion_aritmetica MENOR expresion_aritmetica .
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+
+    AND             reduce using rule 18 (termino_logico -> expresion_aritmetica MENOR expresion_aritmetica .)
+    OR              reduce using rule 18 (termino_logico -> expresion_aritmetica MENOR expresion_aritmetica .)
+    $end            reduce using rule 18 (termino_logico -> expresion_aritmetica MENOR expresion_aritmetica .)
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+
+
+state 29
+
+    (19) termino_logico -> expresion_aritmetica MAYORIGUAL expresion_aritmetica .
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+
+    AND             reduce using rule 19 (termino_logico -> expresion_aritmetica MAYORIGUAL expresion_aritmetica .)
+    OR              reduce using rule 19 (termino_logico -> expresion_aritmetica MAYORIGUAL expresion_aritmetica .)
+    $end            reduce using rule 19 (termino_logico -> expresion_aritmetica MAYORIGUAL expresion_aritmetica .)
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+
+
+state 30
+
+    (20) termino_logico -> expresion_aritmetica MENORIGUAL expresion_aritmetica .
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+
+    AND             reduce using rule 20 (termino_logico -> expresion_aritmetica MENORIGUAL expresion_aritmetica .)
+    OR              reduce using rule 20 (termino_logico -> expresion_aritmetica MENORIGUAL expresion_aritmetica .)
+    $end            reduce using rule 20 (termino_logico -> expresion_aritmetica MENORIGUAL expresion_aritmetica .)
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+
+
+state 31
+
+    (13) expresion_logica -> expresion_logica AND termino_logico .
+
+    AND             reduce using rule 13 (expresion_logica -> expresion_logica AND termino_logico .)
+    OR              reduce using rule 13 (expresion_logica -> expresion_logica AND termino_logico .)
+    $end            reduce using rule 13 (expresion_logica -> expresion_logica AND termino_logico .)
+
+
+state 32
+
+    (15) termino_logico -> expresion_aritmetica . IGUAL expresion_aritmetica
+    (16) termino_logico -> expresion_aritmetica . DIFERENTE expresion_aritmetica
+    (17) termino_logico -> expresion_aritmetica . MAYOR expresion_aritmetica
+    (18) termino_logico -> expresion_aritmetica . MENOR expresion_aritmetica
+    (19) termino_logico -> expresion_aritmetica . MAYORIGUAL expresion_aritmetica
+    (20) termino_logico -> expresion_aritmetica . MENORIGUAL expresion_aritmetica
+    (4) expresion_aritmetica -> expresion_aritmetica . MAS termino
+    (5) expresion_aritmetica -> expresion_aritmetica . MENOS termino
+
+    IGUAL           shift and go to state 12
+    DIFERENTE       shift and go to state 13
+    MAYOR           shift and go to state 14
+    MENOR           shift and go to state 15
+    MAYORIGUAL      shift and go to state 16
+    MENORIGUAL      shift and go to state 17
+    MAS             shift and go to state 10
+    MENOS           shift and go to state 11
+
+
+state 33
+
+    (14) expresion_logica -> expresion_logica OR termino_logico .
+
+    AND             reduce using rule 14 (expresion_logica -> expresion_logica OR termino_logico .)
+    OR              reduce using rule 14 (expresion_logica -> expresion_logica OR termino_logico .)
+    $end            reduce using rule 14 (expresion_logica -> expresion_logica OR termino_logico .)
+
+
+state 34
+
+    (7) termino -> termino POR factor .
+
+    POR             reduce using rule 7 (termino -> termino POR factor .)
+    DIVIDIDO        reduce using rule 7 (termino -> termino POR factor .)
+    MAS             reduce using rule 7 (termino -> termino POR factor .)
+    MENOS           reduce using rule 7 (termino -> termino POR factor .)
+    IGUAL           reduce using rule 7 (termino -> termino POR factor .)
+    DIFERENTE       reduce using rule 7 (termino -> termino POR factor .)
+    MAYOR           reduce using rule 7 (termino -> termino POR factor .)
+    MENOR           reduce using rule 7 (termino -> termino POR factor .)
+    MAYORIGUAL      reduce using rule 7 (termino -> termino POR factor .)
+    MENORIGUAL      reduce using rule 7 (termino -> termino POR factor .)
+    $end            reduce using rule 7 (termino -> termino POR factor .)
+    PARDER          reduce using rule 7 (termino -> termino POR factor .)
+    AND             reduce using rule 7 (termino -> termino POR factor .)
+    OR              reduce using rule 7 (termino -> termino POR factor .)
+
+
+state 35
+
+    (8) termino -> termino DIVIDIDO factor .
+
+    POR             reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    DIVIDIDO        reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    MAS             reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    MENOS           reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    IGUAL           reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    DIFERENTE       reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    MAYOR           reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    MENOR           reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    MAYORIGUAL      reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    MENORIGUAL      reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    $end            reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    PARDER          reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    AND             reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+    OR              reduce using rule 8 (termino -> termino DIVIDIDO factor .)
+
+
+state 36
+
+    (11) factor -> PARIZQ expresion_aritmetica PARDER .
+
+    POR             reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    DIVIDIDO        reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    MAS             reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    MENOS           reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    IGUAL           reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    DIFERENTE       reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    MAYOR           reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    MENOR           reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    MAYORIGUAL      reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    MENORIGUAL      reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    $end            reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    PARDER          reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    AND             reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+    OR              reduce using rule 11 (factor -> PARIZQ expresion_aritmetica PARDER .)
+
